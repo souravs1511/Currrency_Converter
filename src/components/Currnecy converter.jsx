@@ -82,7 +82,7 @@ const CurrnecyConverter = () => {
                     <button onClick={ConvertCurrencies} className='bg-[#9873fe] px-14 py-1  my-3  rounded-lg hover:bg-purple-500 text-white font-semibold mt-3 w-full '>Convert</button>
                 </div>
 
-                <div className='bg-violet-300 px-10 py-4 rounded text-lg text-white font-semibold tracking-wider my-10 '>
+                <div className='bg-violet-400 px-10 py-4 rounded text-lg text-white font-semibold tracking-wider my-10 '>
                     <p>Your Converted Amount IS : {isLoading ? "Loading..." : result}</p>
 
                 </div>
