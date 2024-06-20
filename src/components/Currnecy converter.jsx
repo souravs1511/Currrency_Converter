@@ -63,7 +63,7 @@ const CurrnecyConverter = () => {
 
 
     return (
-        <div className=" flex flex-col mx-3 my-10 rounded-xl p-5 bg-white  lg:w-[50%]">
+        <div className=" flex flex-col  mx-3 my-10 rounded-xl bg-white sm:w-[50%] lg:w-[50%]">
             <div className=' flex justify-center' >
                 <img className=" w-28 rounded-lg my-5" src={converter} alt="" />
             </div>
@@ -92,11 +92,11 @@ const CurrnecyConverter = () => {
 
 
 
-                <div className='w-full mt-3'>
-                    <button onClick={ConvertCurrencies} className='bg-[#9873fe] px-14 py-1  my-3  rounded-lg hover:bg-purple-500 text-white font-semibold mt-3 w-full '>Convert</button>
+                <div className='mt-3'>
+                    <button onClick={ConvertCurrencies} className='bg-[#9873fe] px-14 py-1  my-3  rounded-lg hover:bg-purple-500 text-white font-semibold mt-3 '>Convert</button>
                 </div>
 
-                <div className='bg-violet-400 px-10 py-4 rounded text-lg text-white font-semibold tracking-wider my-10 '>
+                <div className='bg-violet-400 px-5 py-2 rounded text-lg text-white font-semibold  my-10 w-[90%] text-center'>
                     <p>Your Converted Amount IS : {isLoading ? "Loading..." : result}</p>
 
                 </div>

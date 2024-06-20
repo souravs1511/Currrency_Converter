@@ -13,9 +13,9 @@ const DropDown = ({
 
     return (
 
-        <div className="flex lg:gap-4 sm:gap-2 gap-1 items-center ">
+        <div className="flex lg:gap-4 md:gap-2 gap-1 items-center ">
             <label className="text-lg">{title}</label>
-                <img src={Img} alt="" className="w-8 h-7 my-2" />
+                <img src={Img} alt="" className="lg:w-8 lg:h-7 w-[30px] my-2" />
                 <select className="outline-none bg-[#9873fe] lg:p-[5px] md:p-[5px] rounded  text-white" onChange={(e) => onChange(e.target.value)} value={value} >
                     {currencies?.map((currency) => { 
                         return (
