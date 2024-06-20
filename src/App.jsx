@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <div className=''>
+      <div className='w-full h-screen flex justify-center'>
       <CurrnecyConverter/>
       </div>
     </>

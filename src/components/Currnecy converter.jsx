@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import converter from '../assets/pixlr-image-generator-1d1bcc03-844c-425c-a235-a8c13eeb520d.png'
 import DropDown from './DropDown';
+import swapimg from '../assets/swap.png'
 // conversion: 'https://api.frankfurter.app/currencies'
 // conversion: 'https://api.frankfurter.app/latest?amount=1&from=USD&to=INR'
 const CurrnecyConverter = () => {
@@ -9,17 +10,27 @@ const CurrnecyConverter = () => {
     const [result, setresult] = useState(0)
     const [from, setfrom] = useState('USD')
     const [to, setTo] = useState('INR')
+    const [fromImg, setfromImg] = useState(null)
+    const [toImg, setToImg] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
     const fetchCurrencies = async () => {
         try {
             const res = await fetch("https://api.frankfurter.app/currencies")
-            const data = await res.json()
+            const data = await res.json();
+
             setcurrencies(Object.keys(data))
         } catch (error) {
             console.error("Enter Fetching", error)
 
         }
+    }
+
+    const featchFlage = async () => {
+        const fromImge = `https://flagcdn.com/48x36/${from.toLowerCase().substring(0, 2)}.png`
+        const toImge = `https://flagcdn.com/48x36/${to.toLowerCase().substring(0, 2)}.png`
+        setToImg(toImge);
+        setfromImg(fromImge);
     }
 
     const ConvertCurrencies = async () => {
@@ -36,23 +47,29 @@ const CurrnecyConverter = () => {
         setIsLoading(false);
     }
 
+    function swap() {
+        setfrom(to);
+        setTo(from);
+    }
+
     useEffect(() => {
-        fetchCurrencies()
-    }, [amount])
+        fetchCurrencies();
+        featchFlage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [from, to])
     console.log(currencies);
 
 
 
 
     return (
-        <div className=" flex flex-col mx-3 md:container md:mx-auto my-10 rounded-xl p-5 bg-white min-h-[80vh] md:w-1/3">
+        <div className=" flex flex-col mx-3 my-10 rounded-xl p-5 bg-white  lg:w-[50%]">
             <div className=' flex justify-center' >
                 <img className=" w-28 rounded-lg my-5" src={converter} alt="" />
             </div>
             <h2 className='text-xl text-center font-bold underline'>The Currency Converter</h2>
 
 
-            
             <div className='flex flex-col w-full items-center'>
                 <div className='my-12'>
                     <label className='text-lg'>Amount:</label>
@@ -65,15 +82,12 @@ const CurrnecyConverter = () => {
 
 
 
-                <div className='flex gap-20 my-2 '>
-                    <DropDown currencies={currencies} title='from:' onChange={setfrom} 
-                        value={from} 
-                        />
-                    
-
-                    {/* swap  */} 
-
-                    <DropDown currencies={currencies} title='To:' onChange={setTo} value={to} />
+                <div className='flex lg:gap-5 gap-3'>
+                    <DropDown currencies={currencies} title='from:' onChange={setfrom}
+                        value={from} Img={fromImg}
+                    />
+                  <img   onClick={swap} className='w-[40px]' src={swapimg} alt="" />
+                    <DropDown currencies={currencies} title='To:' onChange={setTo} value={to} Img={toImg} />
                 </div>
 
 
